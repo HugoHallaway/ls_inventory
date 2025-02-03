@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useNuiEvent from '../../hooks/useNuiEvent';
 import InventoryControl from './InventoryControl';
 import InventoryHotbar from './InventoryHotbar';
+import InventoryStats from './InventoryStats';
 import { useAppDispatch } from '../../store';
 import { refreshSlots, setAdditionalMetadata, setupInventory } from '../../store/inventory';
 import { useExitListener } from '../../hooks/useExitListener';
@@ -30,6 +31,7 @@ const Inventory: React.FC = () => {
   useNuiEvent<{
     leftInventory?: InventoryProps;
     rightInventory?: InventoryProps;
+    playerStats?: InventoryProps;
   }>('setupInventory', (data) => {
     dispatch(setupInventory(data));
     !inventoryVisible && setInventoryVisible(true);
@@ -49,14 +51,16 @@ const Inventory: React.FC = () => {
           <div className='verticalline'></div>
 
           <div className='playerinventory'>
-          <LeftInventory />
-          <HotInventory />
+            <LeftInventory />
+          </div>
 
+          <div className='inventory-control'>
+            <InventoryControl />
           </div>
 
           <div className='secondaryinventory'>
-          <RightInventory />
-          <InventoryControl />
+            <RightInventory />
+            <InventoryStats />
           </div>
           <Tooltip />
           <InventoryContext />

@@ -9,12 +9,12 @@ const HotInventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => 
 
   return (
     <>
-      <div className="hotinventory-grid-wrapper">
+      {/* <div className="hotinventory-grid-wrapper">
       <div className='label-container'>
               <img src={bag} alt="" />
             <p>POCKETT</p>
             </div>
-        <div className='line'></div>
+        <div className='line'></div> */}
 
 
         <div className="hotinventory-grid-container" >
@@ -30,7 +30,7 @@ const HotInventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => 
             ))}
           </>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 };

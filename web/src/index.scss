@@ -9,7 +9,7 @@ $secondaryColorLight: rgba(255, 255, 255, 0.5);
 $secondaryColorDark: rgba(214, 214, 214, 0.8);
 
 $gridCols: 5;
-$gridRows: 3;
+$gridRows: 4;
 $secondarygridRows: 4;
 $gridSize: 10.2vh;
 $gridGap: 0.4vw;
@@ -134,7 +134,7 @@ button:active {
 .inventory-control {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   gap: 1vw;
 
 
@@ -181,6 +181,12 @@ button:active {
     }
     &:hover {
       background-color: $secondaryColorDark;
+    }
+
+    p{
+      font-size: 0.7vw;
+      font-weight: bold;
+      text-transform: uppercase;
     }
   }
 }
@@ -375,6 +381,29 @@ button:active {
   flex-direction: row;
   align-items: center;
   gap: 0.4vw;
+
+  img{
+    width: .9vw;
+  }
+  p{
+    font-size: 0.7vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $textColor;
+  }
+}
+
+.stats-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4vw;
+  background-color: $secondaryColor;
+  border-radius: 2.5%;
+  border: none;
+  width: 5vw;
+  height: 2vw;
 
   img{
     width: .9vw;

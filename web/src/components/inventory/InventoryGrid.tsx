@@ -5,7 +5,9 @@ import InventorySlot from './InventorySlot';
 import { getTotalWeight } from '../../helpers';
 import { useAppSelector } from '../../store';
 import { useIntersection } from '../../hooks/useIntersection';
-import bag from '../../assets/bag.png'
+import HotInventoryGrid from './HotInventoryGrid';
+import box from '../../assets/box.png'
+import person from '../../assets/person.png'
 import weights from '../../assets/weight.png'
 const PAGE_SIZE = 30;
 
@@ -30,20 +32,26 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
         <div>
           <div className="inventory-grid-header-wrapper">
             <div className='label-container'>
-              <img src={bag} alt="" />
+              <img src={inventory.type === 'player' ? person : box} alt="" />
             <p>{inventory.label}</p>
             </div>
             {inventory.maxWeight && (
               <div className='weight-container'>
                 <img src={weights} alt="" />
               <p>
-                {weight / 1000}/{inventory.maxWeight / 1000}kg
+                {weight / 1000} / {inventory.maxWeight / 1000} kg
               </p>
               </div>
             )}
           </div>
-
         </div>
+
+        {inventory.type === 'player' && (
+          <div className='player'>
+            <HotInventoryGrid inventory={inventory} />
+          </div>
+        )}
+
         <div className={inventory.type == 'player' ? "inventory-grid-container" : "secinventory-grid-container"} ref={containerRef}>
           <>
             {inventory.items.slice(inventory.type == 'player' ? 5 :0, (page + 1) * PAGE_SIZE).map((item, index) => (

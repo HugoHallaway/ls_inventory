@@ -7,7 +7,7 @@ import {
   stackSlotsReducer,
   swapSlotsReducer,
 } from '../reducers';
-import { State } from '../typings';
+import { State, InventoryStats } from '../typings';
 
 const initialState: State = {
   leftInventory: {
@@ -23,6 +23,12 @@ const initialState: State = {
     slots: 0,
     maxWeight: 0,
     items: [],
+  },
+  playerStats: {
+    health: 0,
+    hunger: 0,
+    thirsty: 0,
+    armor: 0,
   },
   additionalMetadata: new Array(),
   itemAmount: 0,
@@ -62,6 +68,9 @@ export const inventorySlice = createSlice({
 
       container.weight = action.payload;
     },
+    setPlayerStats(state, action: PayloadAction<InventoryStats>) {
+      state.playerStats = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(isPending, (state) => {
@@ -95,10 +104,12 @@ export const {
   stackSlots,
   refreshSlots,
   setContainerWeight,
+  setPlayerStats,
 } = inventorySlice.actions;
 export const selectLeftInventory = (state: RootState) => state.inventory.leftInventory;
 export const selectRightInventory = (state: RootState) => state.inventory.rightInventory;
 export const selectItemAmount = (state: RootState) => state.inventory.itemAmount;
 export const selectIsBusy = (state: RootState) => state.inventory.isBusy;
+export const selectplayerStats = (state: RootState) => state.inventory.playerStats;
 
 export default inventorySlice.reducer;
