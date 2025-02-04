@@ -27,7 +27,7 @@ const initialState: State = {
   playerStats: {
     health: 0,
     hunger: 0,
-    thirsty: 0,
+    thirst: 0,
     armor: 0,
   },
   additionalMetadata: new Array(),
@@ -79,6 +79,7 @@ export const inventorySlice = createSlice({
       state.history = {
         leftInventory: current(state.leftInventory),
         rightInventory: current(state.rightInventory),
+        playerStats: current(state.playerStats),
       };
     });
     builder.addMatcher(isFulfilled, (state) => {

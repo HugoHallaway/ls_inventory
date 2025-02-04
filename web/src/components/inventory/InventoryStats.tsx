@@ -23,23 +23,39 @@ const InventoryStats: React.FC = () => {
       <div className='line'></div>
         <div className="inventory-control-wrapper">
           <div className="stats-container">
+            <div
+              className="stats-bar"
+              style={{ height: `${playerStats.health}%`, backgroundColor: 'var(--low-health)' }}
+            ></div>
             <img src={healthimg} alt="" />
-            <p>{playerStats.health}</p>
+            <p>{playerStats.health} %</p>
           </div>
           
           <div className="stats-container">
+            <div
+              className="stats-bar"
+              style={{ height: `${playerStats.hunger}%`, backgroundColor: 'var(--low-hunger)' }}
+            ></div>
             <img src={foodimg} alt="" />
-            <p>{playerStats.hunger}</p>
+            <p>{playerStats.hunger} %</p>
           </div>
 
           <div className="stats-container">
+            <div
+              className="stats-bar"
+              style={{ height: `${playerStats.thirst}%`, backgroundColor: 'var(--low-thirst)' }}
+            ></div>
             <img src={drinkimg} alt="" />
-            <p>{playerStats.thirsty}</p>
+            <p>{playerStats.thirst} %</p>
           </div>
 
           <div className="stats-container">
+            <div
+              className="stats-bar"
+              style={{ height: `${playerStats.armor}%`, backgroundColor: 'var(--low-armor)' }}
+            ></div>
             <img src={armorimg} alt="" />
-            <p>{playerStats.armor}</p>
+            <p>{playerStats.armor} %</p>
           </div>
         </div>
       </div>

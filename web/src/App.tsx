@@ -80,14 +80,15 @@ debugData([
             metadata: {
               description: 'Simple lockpick that breaks easily and can pick basic door locks',
             },
+            count: 5,
           },
         ],
       },
       playerStats: {
         health: 100,
-        hunger: 90,
-        thirsty: 75,
-        armor: 0,
+        hunger: 60,
+        thirst: 20,
+        armor: 80,
       },
     },
   },

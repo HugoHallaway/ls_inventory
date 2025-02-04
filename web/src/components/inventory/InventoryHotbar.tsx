@@ -31,7 +31,7 @@ const InventoryHotbar: React.FC = () => {
           <div
             className="hotbar-item-slot"
             style={{
-                      backgroundColor: isSlotWithItem(item) ? 'rgba(142, 142, 142,0.63)' : 'rgba(71, 71, 71, 0.63)',
+              backgroundColor: isSlotWithItem(item) ? 'rgba(142, 142, 142,0.63)' : 'rgba(71, 71, 71, 0.63)',
               backgroundImage: `url(${item?.name ? getItemUrl(item as SlotWithItem) : 'none'}`,
             }}
             key={`hotbar-${item.slot}`}
@@ -40,7 +40,18 @@ const InventoryHotbar: React.FC = () => {
               <div className="item-slot-wrapper">
                 <div className="item-slot-header-wrapper">
                   <div className="inventory-slot-number">{item.slot}</div>
-                  <p>{item.count ? item.count.toLocaleString('en-us') + `x` : ''}</p>
+                  <p className="weight">
+                    {item.weight > 0
+                      ? item.weight >= 1000
+                        ? `${(item.weight / 1000).toLocaleString('en-us', {
+                          minimumFractionDigits: 2,
+                        })}kg `
+                        : `${item.weight.toLocaleString('en-us', {
+                          minimumFractionDigits: 0,
+                        })}g `
+                      : ''}
+                  </p>
+                  <p className="quantity">{item.count ? item.count.toLocaleString('en-us') + `x` : ''}</p>
                 </div>
                 <div>
                   <div className="inventory-slot-label-box">

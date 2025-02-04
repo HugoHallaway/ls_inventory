@@ -13,5 +13,6 @@ export type State = {
   history?: {
     leftInventory: Inventory;
     rightInventory: Inventory;
+    playerStats: InventoryStats;
   };
 };

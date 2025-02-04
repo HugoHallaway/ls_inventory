@@ -19,6 +19,8 @@ RegisterNetEvent('ox_inventory:clearWeapons', function()
 	Weapon.ClearAll(currentWeapon)
 end)
 
+local playerStats = { health = (GetEntityHealth(cache.ped) - 100), hunger = (LocalPlayer.state.hunger or 100), thirsty = (LocalPlayer.state.thirst or 100), armor = (GetPedArmour(cache.ped))}
+
 local StashTarget
 
 exports('setStashTarget', function(id, owner)
@@ -279,7 +281,8 @@ function client.openInventory(inv, data)
         action = 'setupInventory',
         data = {
             leftInventory = left,
-            rightInventory = currentInventory
+			rightInventory = currentInventory,
+			playerStats = playerStats
         }
     })
 
@@ -337,7 +340,8 @@ RegisterNetEvent('ox_inventory:forceOpenInventory', function(left, right)
 		action = 'setupInventory',
 		data = {
 			leftInventory = left,
-			rightInventory = currentInventory
+			rightInventory = currentInventory,
+			playerStats = playerStats
 		}
 	})
 end)
@@ -1584,7 +1588,8 @@ RegisterNetEvent('ox_inventory:viewInventory', function(left, right)
 		action = 'setupInventory',
 		data = {
 			leftInventory = left,
-			rightInventory = currentInventory
+			rightInventory = currentInventory,
+			playerStats = playerStats
 		}
 	})
 end)

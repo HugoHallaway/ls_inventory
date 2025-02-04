@@ -1,6 +1,6 @@
 export type InventoryStats = {
   health: number,
   hunger: number,
-  thirsty: number,
+  thirst: number,
   armor: number,
 };
