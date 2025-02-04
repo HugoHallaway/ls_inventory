@@ -63,7 +63,7 @@ debugData([
         id: 'shop',
         type: 'crafting',
         slots: 5000,
-        label: 'Coffre Haut-Gradé',
+        label: 'Storage',
         weight: 3000,
         maxWeight: 5000,
         items: [

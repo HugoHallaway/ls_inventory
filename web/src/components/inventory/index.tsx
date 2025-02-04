@@ -6,7 +6,7 @@ import InventoryStats from './InventoryStats';
 import { useAppDispatch } from '../../store';
 import { refreshSlots, setAdditionalMetadata, setupInventory } from '../../store/inventory';
 import { useExitListener } from '../../hooks/useExitListener';
-import type { Inventory as InventoryProps } from '../../typings';
+import type { Inventory as InventoryProps, InventoryStats as InventoryStatsProps } from '../../typings';
 import RightInventory from './RightInventory';
 import LeftInventory from './LeftInventory';
 import Tooltip from '../utils/Tooltip';
@@ -31,7 +31,7 @@ const Inventory: React.FC = () => {
   useNuiEvent<{
     leftInventory?: InventoryProps;
     rightInventory?: InventoryProps;
-    playerStats?: InventoryProps;
+    playerStats?: InventoryStatsProps;
   }>('setupInventory', (data) => {
     dispatch(setupInventory(data));
     !inventoryVisible && setInventoryVisible(true);
