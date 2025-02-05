@@ -28,7 +28,7 @@ const InventoryStats: React.FC = () => {
               style={{ height: `${playerStats.health}%`, backgroundColor: 'var(--low-health)' }}
             ></div>
             <img src={healthimg} alt="" />
-            <p>{playerStats.health} %</p>
+            <p>{Math.round(playerStats.health)} %</p>
           </div>
           
           <div className="stats-container">
@@ -37,7 +37,7 @@ const InventoryStats: React.FC = () => {
               style={{ height: `${playerStats.hunger}%`, backgroundColor: 'var(--low-hunger)' }}
             ></div>
             <img src={foodimg} alt="" />
-            <p>{playerStats.hunger} %</p>
+            <p>{Math.round(playerStats.hunger)} %</p>
           </div>
 
           <div className="stats-container">
@@ -46,7 +46,7 @@ const InventoryStats: React.FC = () => {
               style={{ height: `${playerStats.thirst}%`, backgroundColor: 'var(--low-thirst)' }}
             ></div>
             <img src={drinkimg} alt="" />
-            <p>{playerStats.thirst} %</p>
+            <p>{Math.round(playerStats.thirst)} %</p>
           </div>
 
           <div className="stats-container">
@@ -55,7 +55,7 @@ const InventoryStats: React.FC = () => {
               style={{ height: `${playerStats.armor}%`, backgroundColor: 'var(--low-armor)' }}
             ></div>
             <img src={armorimg} alt="" />
-            <p>{playerStats.armor} %</p>
+            <p>{Math.round(playerStats.armor)} %</p>
           </div>
         </div>
       </div>

@@ -19,7 +19,10 @@ RegisterNetEvent('ox_inventory:clearWeapons', function()
 	Weapon.ClearAll(currentWeapon)
 end)
 
-local playerStats = { health = (GetEntityHealth(cache.ped) - 100), hunger = (LocalPlayer.state.hunger or 100), thirsty = (LocalPlayer.state.thirst or 100), armor = (GetPedArmour(cache.ped))}
+local function syncPlayerStats()
+	local playerStats = { health = (GetEntityHealth(cache.ped) - 100), hunger = (LocalPlayer.state.hunger or 100), thirst = (LocalPlayer.state.thirst or 100), armor = (GetPedArmour(cache.ped)) }
+	return playerStats
+end
 
 local StashTarget
 
@@ -255,7 +258,6 @@ function client.openInventory(inv, data)
         if invOpen then return client.closeInventory() end
     end
 
-
     if not cache.vehicle then
         if inv == 'player' then
             Utils.PlayAnim(0, 'mp_common', 'givetake1_a', 8.0, 1.0, 2000, 50, 0.0, 0, 0, 0)
@@ -282,7 +284,7 @@ function client.openInventory(inv, data)
         data = {
             leftInventory = left,
 			rightInventory = currentInventory,
-			playerStats = playerStats
+			playerStats = syncPlayerStats()
         }
     })
 
@@ -340,8 +342,7 @@ RegisterNetEvent('ox_inventory:forceOpenInventory', function(left, right)
 		action = 'setupInventory',
 		data = {
 			leftInventory = left,
-			rightInventory = currentInventory,
-			playerStats = playerStats
+			rightInventory = currentInventory
 		}
 	})
 end)
@@ -1588,8 +1589,7 @@ RegisterNetEvent('ox_inventory:viewInventory', function(left, right)
 		action = 'setupInventory',
 		data = {
 			leftInventory = left,
-			rightInventory = currentInventory,
-			playerStats = playerStats
+			rightInventory = currentInventory
 		}
 	})
 end)

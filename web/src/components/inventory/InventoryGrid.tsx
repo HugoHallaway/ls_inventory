@@ -8,6 +8,11 @@ import { useIntersection } from '../../hooks/useIntersection';
 import HotInventoryGrid from './HotInventoryGrid';
 import box from '../../assets/box.png'
 import person from '../../assets/person.png'
+import newdrop from '../../assets/newdrop.png'
+import drop from '../../assets/drop.png'
+import otherplayer from '../../assets/otherplayer.png'
+import inspect from '../../assets/inspect.png'
+import crafting from '../../assets/crafting.png'
 import weights from '../../assets/weight.png'
 const PAGE_SIZE = 30;
 
@@ -20,6 +25,14 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
   const containerRef = useRef(null);
   const { ref, entry } = useIntersection({ threshold: 0.5 });
   const isBusy = useAppSelector((state) => state.inventory.isBusy);
+  const images: Record<string, string> = {
+    player: person,
+    newdrop: newdrop,
+    drop: drop,
+    otherplayer: otherplayer,
+    inspect: inspect,
+    crafting: crafting,
+  };
 
   useEffect(() => {
     if (entry && entry.isIntersecting) {
@@ -32,7 +45,7 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
         <div>
           <div className="inventory-grid-header-wrapper">
             <div className='label-container'>
-              <img src={inventory.type === 'player' ? person : box} alt="" />
+              <img src={images[inventory.type] || box} alt="" />
             <p>{inventory.label}</p>
             </div>
             {inventory.maxWeight && (

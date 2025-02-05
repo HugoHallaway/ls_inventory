@@ -463,7 +463,7 @@ button:active {
   padding: 0.2vw;
 
   font-family: $mainFont;
-  font-size: 0.6vw;
+  font-size: 0.5vw;
   font-weight: bold
 }
 
@@ -472,6 +472,7 @@ button:active {
   left: 50%;
   top: -0.5vw;
   transform: translateX(-50%);
+  z-index: 1;
 
   border-radius: 100%;
   background-color: white;
@@ -502,20 +503,21 @@ button:active {
   align-items: center;
 
   .weight {
-    flex-grow: 1; // Remplit l'espace disponible
+    flex-grow: 1;
     text-align: left;
-    left: 0.1vw;
+    left: 0.2vw;
   }
 
   .quantity {
     text-align: right;
-    right: 0.1vw;
+    right: 0.2vw;
   }
 
   p {
     position: relative;
-    font-size: 0.7vw;
-    font-weight: bold
+    font-size: 0.6vw;
+    font-weight: bold;
+    top: 0.1vw;
   }
 }
 
