@@ -52,7 +52,7 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
               <div className='weight-container'>
                 <img src={weights} alt="" />
               <p>
-                {weight / 1000} / {inventory.maxWeight / 1000} kg
+                {(weight / 1000).toFixed(2)} / {inventory.maxWeight / 1000} kg
               </p>
               </div>
             )}

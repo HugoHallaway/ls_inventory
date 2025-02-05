@@ -305,7 +305,7 @@ button:active {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(#{5.5}  * #{$gridSize + 0.22vh} + #{5.5} * #{$gridGap});
+  height: calc(#{5.5}  * #{$gridSize + 0.22vh} + #{5.5} * 0.2vw);
 }
 
 // inventory grids
